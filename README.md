@@ -1,10 +1,10 @@
 # Git & GitHub #
 ### 在軟體開發過程中，版本控制 (Version Control) 扮演核心角色。Git 作為分散式版本控制系統，不僅能記錄程式碼的歷史，更能讓團隊在不同分支上同時開發，最後再合併成果。 ###
 
-### 透過 Git，我們能：
+### 透過 Git，我們能： ###
 - 追蹤變更：每一次提交 (commit) 都能保存當下的程式碼狀態。
 - 管理分支：開發新功能、修復錯誤，都可以在獨立分支上進行，降低衝突風險。
-- 靈活協作：開發者能推送 (push) 程式碼至遠端，透過Pull Request進行程式碼審查 (Code Review)，確保品質並促進協作。 ###
+- 靈活協作：開發者能推送 (push) 程式碼至遠端，透過Pull Request進行程式碼審查 (Code Review)，確保品質並促進協作。
 
 ### GitHub不僅是程式碼倉庫，也是一個協作平台。除了版本控制，它還提供 Issue管理、專案看板、CI/CD 整合 (GitHub Actions) 等功能，使團隊能在同一平台上完成從開發到部署的流程。 ###
 
@@ -20,7 +20,7 @@ MacPorts:
 ```bash
 sudo port install git
 ```
-
+#
 ```bash
 git --version
 ```
@@ -122,13 +122,13 @@ git switch main
 ## 抓遠端最新 ##
 - 只同步遠端資訊
 ```bash
-
+git fetch
 ```
 - 更新當前分支（自動合併，可能多一個 commit）
 ```bash
-git fetch
+git pull
 ```
 - 更新當前分支（線性歷史，乾淨）
 ```bash
-
+git pull --rebase
 ```
