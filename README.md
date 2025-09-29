@@ -8,10 +8,22 @@
 
 ### GitHub不僅是程式碼倉庫，也是一個協作平台。除了版本控制，它還提供 Issue管理、專案看板、CI/CD 整合 (GitHub Actions) 等功能，使團隊能在同一平台上完成從開發到部署的流程。 ###
 
-
-
 # Git repo init & 1st upload #
 Download and install git at https://git-scm.com
+- or
+Homebrew:
+```bash
+brew install git
+```
+- or
+MacPorts:
+```bash
+sudo port install git
+```
+
+```bash
+git --version
+```
 ```bash
 git init
 ```
@@ -45,26 +57,40 @@ git commit -m "Type what you did"
 git push
 ```
 
-
-
-# Reroll #
 ## 找到你想要挑的 commit ID ##
 ```bash
 git log --oneline
 ```
 
-## 回到上一個 commit ##
-
+# 回到上一個 commit #
+取消最後一次 commit，但保留修改
 ```bash
 git reset --soft HEAD~1
 ```
+取消最後一次 commit，但保留檔案變更（未暫存）
+```bash
+git reset --mixed HEAD~1
+```
+整個回到上個版本，檔案內容也復原
 ```bash
 git reset --hard HEAD~1
 ```
 
-### 覆蓋遠端 ##
+# 覆蓋遠端 #
+- 沒改寫歷史（沒有 rebase/ amend/ reset）：
+- → 用 一般 push。
+```bash
+git push
+```
+- 剛做完 rebase / amend / reset，需要更新遠端：
+- → 優先 --force-with-lease。
 ```bash
 git push origin main --force
+```
+- 🚨個人倉庫或臨時分支，只有你一個人用：
+- → 可接受 --force，但仍建議習慣 --force-with-lease。
+```bash
+git push --force-with-lease
 ```
 
 # Branch operation #
@@ -94,8 +120,15 @@ git switch main
 ```
 
 ## 抓遠端最新 ##
+- 只同步遠端資訊
+```bash
+
+```
+- 更新當前分支（自動合併，可能多一個 commit）
 ```bash
 git fetch
 ```
+- 更新當前分支（線性歷史，乾淨）
+```bash
 
-#Test#
+```
