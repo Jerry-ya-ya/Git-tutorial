@@ -1,20 +1,29 @@
 # Git & GitHub #
-## 在軟體開發過程中，版本控制 (Version Control) 扮演核心角色。Git 作為分散式版本控制系統，不僅能記錄程式碼的歷史，更能讓團隊在不同分支上同時開發，最後再合併成果。 ##
+
+## 版本控制 (Version Control) ##
+
+在軟體開發過程中，版本控制 (Version Control) 扮演核心角色。Git 作為分散式版本控制系統，不僅能記錄程式碼的歷史，更能讓團隊在不同分支上同時開發，最後再合併成果。 
 
 ## 透過 Git，我們能： ##
+
 - 追蹤變更：每一次提交 (commit) 都能保存當下的程式碼狀態。
 - 管理分支：開發新功能、修復錯誤，都可以在獨立分支上進行，降低衝突風險。
-- 靈活協作：開發者能推送 (push) 程式碼至遠端，透過Pull Request進行程式碼審查 (Code Review)，確保品質並促進協作。
+- 靈活協作：開發者能推送 (push) 程式碼至遠端，透過Pull Request 進行程式碼審查(Code Review)，確保品質並促進協作。
 
-## GitHub不僅是程式碼倉庫，也是一個協作平台。除了版本控制，它還提供 Issue管理、專案看板、CI/CD 整合 (GitHub Actions) 等功能，使團隊能在同一平台上完成從開發到部署的流程。 ##
+## GitHub ##
+
+GitHub 不僅是程式碼倉庫，也是一個協作平台。除了版本控制，它還提供Issue 管理、專案看板、CI/CD 整合 (GitHub Actions) 等功能，使團隊能在同一平台上完成從開發到部署的流程。
 
 ## 教學紀錄 ##
+
 https://youtu.be/zfXo3YreHB4
 
 # 初始化跟第一次上傳 #
-## Git repo init & 1st upload ##
+
+## Git 倉庫初始化 & 第一次提交 ##
+
 ### Windows ###
-Download and install git at https://git-scm.com
+在 https://git-scm.com 下載並且安裝
 
 or
 
@@ -23,45 +32,84 @@ Homebrew:
 ```bash
 brew install git
 ```
-### Mac ###
+or
+
 MacPorts:
 ```bash
 sudo port install git
 ```
-# 檢查是否安裝跟版本 #
+
+## 檢查是否安裝 & 檢查安裝版本 ##
+
 ```bash
 git --version
 ```
+
+## 本地資料夾初始化 ##
+
 ```bash
 git init
 ```
+
+## 建立遠端Github 倉庫 ##
+登入Github
+
+點選畫面左邊綠色的New
+![新倉庫](./img/1.png)
+
+幫新倉庫取名字
+可以用的名字會在下方綠色提醒(123 is available.)
+![取名字](./img/2.png)
+
+其他不用動按建立倉庫
+![建立倉庫](./img/3.png)
+
+## 連接遠端Github倉庫 ##
+建立好倉庫會在倉庫主頁看到這塊藍色的區域
+將右邊HTTPS的部分複製起來
+![獲取連結](./img/4.png)
+
+將下面的連結替換成剛剛複製的倉庫連結
 ```bash
 git remote add origin https://github.com/你的帳號/你的repo.git
 ```
+
+## 加入所有變更##
+
 ```bash
 git add .
 ```
+
+## 提交變更至本地版本庫 ##
+實作專案的時候請把 What did you do. 改成這次的更新做了什麼
 ```bash
-git commit -m "What did you do"
+git commit -m "What did you do."
 ```
+
+## 把目前所在的分支（通常是 master）改名為 main ##
+
 ```bash
 git branch -M main
 ```
+
+## 初次推送並設定 Upstream ##
+
 ```bash
 git push -u origin main
 ```
-📮 Routine update
+
+## 📮 日常更新 ##
 ```bash
 git add .
 ```
 ```bash
-git commit -m "Type what you did"
+git commit -m "Type what you did."
 ```
 ```bash
 git push
 ```
 
-## 找到你想要挑的 commit ID ##
+# 找到你想要挑的 commit ID #
 ```bash
 git log --oneline
 ```
