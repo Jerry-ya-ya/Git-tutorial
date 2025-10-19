@@ -74,7 +74,7 @@ git init
 git remote add origin https://github.com/你的帳號/你的repo.git
 ```
 
-## 加入所有變更##
+## 加入所有變更 ##
 
 ```bash
 git add .
