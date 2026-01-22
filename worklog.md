@@ -25,3 +25,5 @@
 - Reorganized the file structure and renamed images.
 
 - Implemented the creation of the table of contents.
+
+- Add chapter: Continue the project on another machine.
