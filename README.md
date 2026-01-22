@@ -1,5 +1,16 @@
 # Git & GitHub #
 
+# 目錄
+- [頁首](#nvidia-jetson-orin-nano)
+- [介紹](#介紹)
+- [初始化跟第一次上傳](#初始化跟第一次上傳)
+- [回到上一個-commit](#回到上一個-commit)
+- [覆蓋遠端](#覆蓋遠端)
+- [分支操作](#分支操作)
+- [抓遠端最新](#抓遠端最新)
+
+# 介紹
+
 ## 版本控制 (Version Control)
 
 在軟體開發過程中，版本控制 (Version Control) 扮演核心角色。Git 作為分散式版本控制系統，不僅能記錄程式碼的歷史，更能讓團隊在不同分支上同時開發，最後再合併成果。 
@@ -26,13 +37,13 @@ https://youtu.be/zfXo3YreHB4
 
 Windows
 
-在 https://git-scm.com 下載並且安裝
+- 在 https://git-scm.com 下載並且安裝
 
 or
 
 Macs
 
-Homebrew:
+- Homebrew:
 
 ```bash
 brew install git
@@ -40,7 +51,7 @@ brew install git
 
 or
 
-MacPorts:
+- MacPorts:
 
 ```bash
 sudo port install git
@@ -57,6 +68,20 @@ git --version
 ```bash
 git init
 ```
+
+## 建立新資料
+
+進行上傳前需要專案有變化(建立新檔案、修改檔案)
+
+在資料夾內新增一個 README.md
+
+觀察在建立完之後檔案名有沒有顏色變化
+
+新建立的會是藍色(Untracked)
+
+![文件狀態](./img/file_status.png)
+
+修改過的是橘色(Modified)
 
 ## 建立遠端Github 倉庫
 
@@ -96,10 +121,10 @@ git add .
 
 ## 提交變更至本地版本庫
 
-實作專案的時候請把 What did you do. 改成這次的更新做了什麼
+實作專案的時候請把 "" 改成這次的更新做了什麼
 
 ```bash
-git commit -m "What did you do."
+git commit -m "Connect project to remote Git repository."
 ```
 
 ## 把目前所在的分支（通常是 master）改名為 main
@@ -114,7 +139,11 @@ git branch -M main
 git push -u origin main
 ```
 
-## 📮 日常更新
+這樣就完成第一次，也是最複雜的一次操作了
+
+可以重新整理剛剛新repo的頁面，看看網頁有沒有更新
+
+## 📮 日常更新(多用就會記起來)
 
 ```bash
 git add .
@@ -134,7 +163,7 @@ git push
 git log --oneline
 ```
 
-# 回到上一個 commit #
+# 回到上一個 commit
 
 取消最後一次 commit，但保留修改
 
@@ -158,7 +187,7 @@ git reset --hard HEAD~1
 
 - 沒改寫歷史（沒有 rebase/ amend/ reset）：
 
-- → 用 一般 push。
+- 用 一般 push。
 
 ```bash
 git push
@@ -174,14 +203,14 @@ git push origin main --force
 
 - 🚨個人倉庫或臨時分支，只有你一個人用：
 
-- → 可接受 --force，但仍建議習慣 
+- 可接受 --force，但仍建議習慣 
 --force-with-lease。
 
 ```bash
 git push --force-with-lease
 ```
 
-# Branch operation
+# 分支操作
 
 ## 查看所有分支
 
@@ -219,7 +248,7 @@ git branch -d 分支名
 git branch -D 分支名
 ```
 
-## 抓遠端最新
+# 抓遠端最新
 
 - 只同步遠端資訊
 

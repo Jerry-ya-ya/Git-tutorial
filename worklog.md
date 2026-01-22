@@ -23,3 +23,5 @@
 ## 2026/01/22
 
 - Reorganized the file structure and renamed images.
+
+- Implemented the creation of the table of contents.
