@@ -114,7 +114,7 @@ git remote add origin [空格後貼連結]
 git remote add origin
 ```
 
-## 加入所有變更
+## 加入所有變更 ##
 
 ```bash
 git add .
