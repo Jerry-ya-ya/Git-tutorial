@@ -1,24 +1,30 @@
-# Nvidia Jetson Orin Nano
+# Git tutorial
 
-## 2026/09/27
+## 2025/09/27
 
-- Connect project to remote Git repository.
-
-- Update README.md.
-
-- Implement presentation announcement
-
-## 2026/09/29
+- First commit.
 
 - Update README.md.
 
-- Update README.md.
+- Upload presentation announcement.
 
-## 2026/10/19
+- Test.
+
+## 2025/09/29
 
 - Update README.md.
 
 - Update README.md.
+
+## 2025/10/03
+
+- Improved the tutorial.
+
+## 2025/10/19
+
+- Update.
+
+- Update.
 
 ## 2026/01/22
 
@@ -26,4 +32,12 @@
 
 - Implemented the creation of the table of contents.
 
+## 2026/01/23
+
 - Add chapter: Continue the project on another machine.
+
+- Merge branch 'main' into Jerry.
+
+## 2026/05/06
+
+- Rewrite worklog.

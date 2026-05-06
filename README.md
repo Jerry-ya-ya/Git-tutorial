@@ -1,23 +1,24 @@
-# Git & GitHub #
+# Git & GitHub
 
 # 目錄
-- [頁首](#nvidia-jetson-orin-nano)
-- [介紹](#介紹)
-- [初始化跟第一次上傳](#初始化跟第一次上傳)
-- [回到上一個-commit](#回到上一個-commit)
-- [覆蓋遠端](#覆蓋遠端)
+- [頁首](#git--github)
+- [Git&Github介紹](#gitgithub介紹)
+- [檔案紀錄](#檔案紀錄)
+- [初始化與第一次上傳](#初始化跟第一次上傳)
+- [日常三步驟](#日常三步驟)
+- [取消commit包含遠端](#取消commit包含遠端)
 - [分支操作](#分支操作)
-- [抓遠端最新](#抓遠端最新)
 - [在另一台裝置接續開發](#在另一台裝置接續開發)
 
-# 介紹
+# Git&Github介紹
 
-## 版本控制 (Version Control)
+版本控制 (Version Control)
+
+## Git
 
 在軟體開發過程中，版本控制 (Version Control) 扮演核心角色。Git 作為分散式版本控制系統，不僅能記錄程式碼的歷史，更能讓團隊在不同分支上同時開發，最後再合併成果。 
 
-## 透過 Git，我們能：
-
+透過 Git，我們能：
 - 追蹤變更：每一次提交 (commit) 都能保存當下的程式碼狀態。
 
 - 管理分支：開發新功能、修復錯誤，都可以在獨立分支上進行，降低衝突風險。
@@ -28,7 +29,13 @@
 
 GitHub 不僅是程式碼倉庫，也是一個協作平台。除了版本控制，它還提供Issue 管理、專案看板、CI/CD 整合 (GitHub Actions) 等功能，使團隊能在同一平台上完成從開發到部署的流程。
 
-## 教學紀錄
+# 檔案紀錄
+
+## 活動公告
+
+[技術分享公告](./技術分享.pdf)
+
+## 活動錄影
 
 https://youtu.be/zfXo3YreHB4
 
@@ -36,16 +43,13 @@ https://youtu.be/zfXo3YreHB4
 
 ## Git 倉庫初始化 & 第一次提交
 
-Windows
-
-- 在 https://git-scm.com 下載並且安裝
+### Windows
+在 https://git-scm.com 下載並且安裝
 
 or
 
-Macs
-
-- Homebrew:
-
+### Macs
+Homebrew:
 ```bash
 brew install git
 ```
@@ -69,6 +73,8 @@ git --version
 ```bash
 git init
 ```
+
+# 建立遠端Github 倉庫
 
 ## 建立新資料
 
@@ -100,9 +106,9 @@ git init
 ![建立倉庫](./img/repo_create.png)
 
 ## 連接遠端Github倉庫
-
 建立好倉庫會在倉庫主頁看到這塊藍色的區域
 將右邊HTTPS的部分複製起來
+![獲取連結](./img/repo_url.png)
 
 ![獲取連結](./img/repo_url.png)
 
@@ -114,7 +120,7 @@ git remote add origin [空格後貼連結]
 git remote add origin
 ```
 
-## 加入所有變更 ##
+## 加入所有變更
 
 ```bash
 git add .
@@ -122,8 +128,7 @@ git add .
 
 ## 提交變更至本地版本庫
 
-實作專案的時候請把 "" 改成這次的更新做了什麼
-
+實作專案的時候請把 What did you do. 改成這次的更新做了什麼
 ```bash
 git commit -m "Connect project to remote Git repository."
 ```
@@ -140,11 +145,7 @@ git branch -M main
 git push -u origin main
 ```
 
-這樣就完成第一次，也是最複雜的一次操作了
-
-可以重新整理剛剛新repo的頁面，看看網頁有沒有更新
-
-## 📮 日常更新(多用就會記起來)
+# 日常三步驟
 
 ```bash
 git add .
@@ -158,13 +159,15 @@ git commit -m "Type what you did."
 git push
 ```
 
-# 找到你想要挑的 commit ID
+# 取消commit包含遠端
+
+## 找到你想要挑的 commit ID
 
 ```bash
 git log --oneline
 ```
 
-# 回到上一個 commit
+## 回到上一個 commit
 
 取消最後一次 commit，但保留修改
 
@@ -184,7 +187,7 @@ git reset --mixed HEAD~1
 git reset --hard HEAD~1
 ```
 
-# 覆蓋遠端
+## 覆蓋遠端
 
 - 沒改寫歷史（沒有 rebase/ amend/ reset）：
 
@@ -196,15 +199,16 @@ git push
 
 - 剛做完 rebase / amend / reset，需要更新遠端：
 
-- → 優先 --force-with-lease。
+- 優先 --force-with-lease。
 
 ```bash
 git push origin main --force
 ```
 
-- 🚨個人倉庫或臨時分支，只有你一個人用：
+- 個人倉庫或臨時分支，只有你一個人用：
 
-- 可接受 --force，但仍建議習慣 
+- 可接受 --force
+- 但仍建議習慣 
 --force-with-lease。
 
 ```bash
@@ -219,19 +223,19 @@ git push --force-with-lease
 git branch -a
 ```
 
-## Add new branch and track to remote branch
+## 新增新分支並且讓其追蹤遠端分支
 
 ```bash
 git switch --track origin/New_branch
 ```
 
-## 切到你想要加進去的分支
+## 切到你想要去的分支
 
 ```bash
 git switch main
 ```
 
-## 刪除已不存在的遠端分支
+## 刪除已不存在的遠端分支(當遠端刪除分支)
 
 ```bash
 git fetch -p
@@ -249,7 +253,7 @@ git branch -d 分支名
 git branch -D 分支名
 ```
 
-# 抓遠端最新
+## 抓遠端最新
 
 - 只同步遠端資訊
 
