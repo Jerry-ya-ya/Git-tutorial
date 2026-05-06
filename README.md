@@ -7,6 +7,7 @@
 - [初始化與第一次上傳](#初始化跟第一次上傳)
 - [日常三步驟](#日常三步驟)
 - [取消commit包含遠端](#取消commit包含遠端)
+- [去除敏感檔案並修改-Repo-歷史](#去除敏感檔案並修改-repo-歷史)
 - [分支操作](#分支操作)
 - [在另一台裝置接續開發](#在另一台裝置接續開發)
 
@@ -213,6 +214,152 @@ git push origin main --force
 
 ```bash
 git push --force-with-lease
+```
+
+# 去除敏感檔案並修改 Repo 歷史
+
+當某一次的 commit 含有敏感訊息但是其已經進入歷史
+
+這時候我們就需要馬上把已經公開的東西移除或是更新
+
+再利用工具幫我們改寫歷史
+
+雖然如果有人從公開的 Repo 裡面已經拿到他們本地端還是會看到敏感訊息
+
+但還是要補救
+
+不要讓錯誤擴大
+
+## 清理目前分支上還可以立即看到的敏感訊息
+
+先更新好要修正的內容
+
+然後
+
+```bash
+git add .
+```
+
+```bash
+git commit --amend -m "Fix privacy issue."
+```
+
+```bash
+git push --force-with-lease origin main
+```
+
+這會把最新 commit 改掉
+
+GitHub main 頁面通常就不會再顯示原圖
+
+但是如果這個敏感訊息已經存在好幾個版本就需要工具把他們移除
+
+## 使用 git-filter
+
+先用 pip 安裝 git-filter
+
+```bash
+pip install git-filter-repo
+```
+
+假設敏感的檔案叫 Jerry_selfie_01.png, Jerry_selfie_02.png
+
+放在 img 資料夾裡面
+
+我們可以使用
+
+git filter-repo img/Jerry_selfie_01.png --path img/Jerry_selfie_02.png --invert-paths
+
+這裡 filter-repo 是把所有不符合後面要的東西都刪掉
+
+那因為我們要的是把符合後面要的東西刪掉
+
+所以要在最後加一個 --invert-paths
+
+這樣可以把指令的操作反過來 (invert)
+
+這種會一次刪除很多檔案的指令都很危險
+
+建議 clone 一個同樣的 repo
+
+或是建立一個備份分支
+
+```bash
+git branch backup-before-filter
+```
+
+```bash
+git checkout backup-before-filter
+```
+
+再進行歷史的清理
+
+如果你有多個 Python 版本就需要自己變換一下
+
+XXX 的地方填檔案名稱
+
+```bash
+git filter-repo --path XXX --invert-paths
+```
+
+這種危險的指令有時候會不讓你執行
+
+如果上一個指令被擋下來
+
+可以試試看加上強力的 --force
+
+在用 force 前請三思
+
+老天爺來也檔不住
+
+在來一樣
+
+XXX 的地方填檔案名稱
+
+```bash
+git filter-repo --force --path XXX --invert-paths
+```
+
+最後由於 git filter-repo 執行後常常會把 origin remote 移掉
+
+避免你不小心推錯
+
+先檢查
+
+```bash
+git remote -v
+```
+
+如果沒有任何輸出
+
+就重新加回去
+
+```bash
+git remote add origin 倉庫連結
+```
+
+在檢查過一次後
+
+如果有連上線
+
+就可以強制推回 GitHub
+
+```bash
+git push --force --all origin
+```
+
+```bash
+git push --force --tags origin
+```
+
+最後建議清掉本機垃圾資料
+
+```bash
+git reflog expire --expire=now --all
+```
+
+```bash
+git gc --prune=now --aggressive
 ```
 
 # 分支操作

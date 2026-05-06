@@ -41,3 +41,5 @@
 ## 2026/05/06
 
 - Rewrite worklog.
+
+- Add chapter: Removed sensitive files and rewrote the repository history.
